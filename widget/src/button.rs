@@ -418,7 +418,7 @@ where
                 iced_accessibility::accesskit::ActionRequest { action, .. },
             ) => {
                 let state = tree.state.downcast_mut::<State>();
-                if let Some(Some(on_press)) = (self.id == *event_id
+                if let Some(Some(on_press)) = (crate::core::id::IdEq::eq(&self.id.0, &event_id.0)
                     && matches!(
                         action,
                         iced_accessibility::accesskit::Action::Click
